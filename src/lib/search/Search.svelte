@@ -51,7 +51,7 @@
 
 <button on:click={() => (modalVisible = true)}>
   <Complication>
-    <Icon class="inline h-5 w-5" src={SearchIcon} />
+    <Icon class="mt-[-4px] inline h-5" src={SearchIcon} />
     &nbsp;Search
   </Complication>
 </button>
