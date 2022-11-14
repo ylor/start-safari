@@ -78,7 +78,7 @@
             // "https://duckduckgo.com/ac/?q=" + query + "&type=list", { jsonpCallbackFunction: "autocompleteCallback" }
           )
             .then((response) => response.json())
-            .then((data) => (suggestions = data[1] || []))}
+            .then((data) => (suggestions = data[1].slice(0, 7) || []))}
           autofocus
           placeholder="Search"
           class="h-12 w-full bg-transparent p-2 text-2xl font-medium placeholder-neutral-600 outline-none selection:bg-blue-400"
@@ -87,12 +87,12 @@
       <!-- SEARCH SUGGESTSIONS START -->
       {#if suggestions.length > 1}
         <aside
-          class="max-h-96 overflow-y-auto py-2"
+          class=" max-h-96 overflow-y-auto py-2"
           transition:slide={{ duration: 300 }}
         >
           {#each suggestions as suggestion}
             <a
-              class="mx-2 block rounded-lg px-4 py-1 text-lg text-neutral-400 focus:bg-neutral-500 focus:text-neutral-100 focus:outline-none"
+              class="mx-2 block rounded-lg px-4 py-2 text-lg text-neutral-400 focus:bg-neutral-500 focus:text-neutral-100 focus:outline-none"
               href={parseInput(
                 search.includes(":")
                   ? search.split(":")[0] + ":" + suggestion
