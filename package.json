@@ -11,6 +11,7 @@
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^1.1.1",
     "autoprefixer": "^10.4.13",
+    "cssnano": "^5.1.14",
     "postcss": "^8.4.19",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",
