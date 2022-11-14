@@ -11,7 +11,7 @@
   {:then data}
     <a href="https://www.windy.com/">
       {weatherCode(data.current_weather.weathercode)}
-      {Math.round(data.current_weather.temperature)}
+      {Math.round(data.current_weather.temperature)}°
     </a>
   {/await}
 </Complication>
