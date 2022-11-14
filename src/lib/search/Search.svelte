@@ -21,9 +21,9 @@
   $: query = search.includes(":") ? search.split(":")[1] : search;
 
   function handleKeydown(e) {
-    if (e.altKey || e.ctrlKey || e.metaKey) {
-      return;
-    }
+    // if (e.altKey || e.ctrlKey || e.metaKey) {
+    //   return;
+    // }
 
     const key = e.key;
     if (key === "ArrowDown" || key === "ArrowUp") {

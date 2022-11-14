@@ -6,14 +6,12 @@
 </script>
 
 <Complication>
-  <a href="https://www.windy.com/">
-    {#await $weather}
-      <Loading />
-    {:then data}
+  {#await $weather}
+    <Loading />
+  {:then data}
+    <a href="https://www.windy.com/">
       {weatherCode(data.current_weather.weathercode)}
       {Math.round(data.current_weather.temperature)}
-    {:catch error}
-      <p>An error occurred!</p>
-    {/await}
-  </a>
+    </a>
+  {/await}
 </Complication>
