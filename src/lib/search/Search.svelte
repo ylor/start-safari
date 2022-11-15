@@ -65,7 +65,7 @@
         normalizeUrl(parseInput(search))
       )}
       use:trap
-      class="min-w-fill mx-auto max-w-[640px] divide-y divide-zinc-700 rounded-xl bg-neutral-800/90 ring-1 ring-white/20 "
+      class="min-w-fill mx-auto max-w-[512px] divide-y divide-zinc-700 rounded-xl bg-neutral-800/90 ring-1 ring-white/20 "
     >
       <section class="flex items-center">
         <!-- SEARCH BOX -->
