@@ -20,9 +20,11 @@
 12 items max
 -->
 
-<section class="py-4">
+<section class="py-10">
   <h1 class="pl-1">Favorites</h1>
-  <ul class="grid grid-cols-3 gap-5 md:grid-cols-6 ">
+  <ul
+    class="grid grid-cols-4 gap-x-8 gap-y-4 md:grid-cols-6 md:gap-x-5 md:gap-y-2.5 "
+  >
     {#each favorites as favorite}
       <!-- svelte-ignore a11y-invalid-attribute -->
       <li class="pb-1">
@@ -31,11 +33,13 @@
           href="#"
         >
           <img
-            class="w-[80px] rounded-2xl transition-transform hover:scale-110"
+            class="w-[60px] rounded-xl transition-transform hover:scale-110 md:w-[80px] md:rounded-2xl"
             src="{favorite}.png"
             alt={favorite}
           />
-          <span class="pt-1">{favorite}</span>
+          <span class="pt-1 text-xs font-bold md:text-sm md:font-semibold"
+            >{favorite}</span
+          >
         </a>
       </li>
     {/each}

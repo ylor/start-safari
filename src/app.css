@@ -4,12 +4,16 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  @apply h-screen bg-black text-white;
+}
+
 body {
-  @apply m-0 flex items-center justify-center bg-black text-white md:h-screen;
+  @apply m-0 flex items-center justify-center;
 }
 
 h1 {
-  @apply pb-4 text-2xl font-bold;
+  @apply pb-2 text-2xl font-bold;
 }
 
 /* clears the ‘X’ from Chrome */
@@ -18,4 +22,13 @@ input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration {
   -webkit-appearance: none;
+}
+
+@media screen and (min-width: 768px) {
+  html {
+    height: -webkit-fill-available;
+  }
+  body {
+    min-height: -webkit-fill-available;
+  }
 }

@@ -5,7 +5,7 @@
 </script>
 
 <Complication>
-  <a href="https://www.windy.com/">
+  <a class="w-full text-left" href="https://www.windy.com/">
     {#await $weather}
       <Loading />
     {:then data}

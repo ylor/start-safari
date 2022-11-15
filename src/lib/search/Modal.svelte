@@ -12,11 +12,11 @@
 <aside
   bind:this={backdrop}
   on:click={(e) => (e.target === backdrop ? close() : null)}
-  class="fixed inset-0 bg-gray-900/50 pt-[25vh] backdrop-blur-md"
+  class="fixed inset-0 bg-gray-900/50 pt-[20vh] backdrop-blur-md [@media(hover:none)]:pt-2.5 lg:[@media(hover:none)]:pt-10"
   transition:fade={{ duration: 120 }}
 >
   <section
-    class="mx-auto w-fit px-3"
+    class="mx-auto px-3"
     role="dialog"
     aria-modal="true"
     transition:scale={{ duration: 100 }}

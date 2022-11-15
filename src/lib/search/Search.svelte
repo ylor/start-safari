@@ -49,12 +49,12 @@
 
 <svelte:window on:keydown={handleKeydown} />
 
-<button on:click={() => (modalVisible = true)}>
-  <Complication>
+<Complication>
+  <button class="w-full text-left" on:click={() => (modalVisible = true)}>
     <Icon class="mt-[-4px] inline h-5" src={SearchIcon} />
     &nbsp;Search
-  </Complication>
-</button>
+  </button>
+</Complication>
 
 {#if modalVisible}
   <Modal on:close={() => (modalVisible = false)}>
@@ -65,7 +65,7 @@
         normalizeUrl(parseInput(search))
       )}
       use:trap
-      class="mx-auto max-w-xl divide-y divide-zinc-700 rounded-xl bg-neutral-800/75 ring-1 ring-white/20"
+      class="min-w-fill mx-auto max-w-[640px] divide-y divide-zinc-700 rounded-xl bg-neutral-800/90 ring-1 ring-white/20 "
     >
       <section class="flex items-center">
         <!-- SEARCH BOX -->
@@ -114,7 +114,7 @@
                   search.includes(':')
                     ? search.split(':')[0] + ':' + suggestion
                     : suggestion
-                )}&sz=128"
+                )}&sz=64"
                 class="inline w-8 pr-2"
               />
               {@html suggestion.replace(
