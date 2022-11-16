@@ -1,7 +1,1 @@
-<script>
-  import Complication from "./Complication.svelte";
-</script>
-
-<Complication>
-  <div class="mt-2 h-2 animate-pulse rounded bg-neutral-500" />
-</Complication>
+<div class="h-2 w-8 animate-pulse rounded bg-neutral-500" />
