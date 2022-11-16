@@ -12,9 +12,6 @@
   <section class="flex flex-wrap gap-3 px-3">
     <FakeWeather />
     <FakeSunriseSunset />
-    <Complication>
-      <Loading />
-    </Complication>
     <Search />
   </section>
 </main>

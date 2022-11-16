@@ -1,1 +1,1 @@
-<div class="h-2 w-8 animate-pulse rounded bg-neutral-500" />
+<button class="h-3 w-24 animate-pulse rounded bg-neutral-500" />

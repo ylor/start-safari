@@ -4,18 +4,16 @@
   import { weather } from "./weather-stores";
 </script>
 
-<Complication>
-  <a class="w-full text-left" href="https://www.windy.com/">
-    {#await $weather}
-      <Loading />
-    {:then data}
-      Sunrise 🌅
-      {new Date(data.daily.sunrise[0]).toLocaleTimeString("en-US", {
-        hour: "numeric",
-        minute: "2-digit",
-      })}
-    {:catch error}
-      <p>An error occurred!</p>
-    {/await}
-  </a>
+<Complication href="https://www.windy.com/">
+  {#await $weather}
+    <Loading />
+  {:then data}
+    Sunrise 🌅
+    {new Date(data.daily.sunrise[0]).toLocaleTimeString("en-US", {
+      hour: "numeric",
+      minute: "2-digit",
+    })}
+  {:catch error}
+    <p>An error occurred!</p>
+  {/await}
 </Complication>

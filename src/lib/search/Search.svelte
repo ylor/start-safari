@@ -49,12 +49,12 @@
 
 <svelte:window on:keydown={handleKeydown} />
 
-<Complication>
-  <button class="w-full text-left" on:click={() => (modalVisible = true)}>
+<button class="basis-full sm:basis-auto" on:click={() => (modalVisible = true)}>
+  <Complication>
     <Icon class="mt-[-4px] inline h-5" src={SearchIcon} />
     &nbsp;Search
-  </button>
-</Complication>
+  </Complication>
+</button>
 
 {#if modalVisible}
   <Modal on:close={() => (modalVisible = false)}>
@@ -65,11 +65,14 @@
         normalizeUrl(parseInput(search))
       )}
       use:trap
+      autocapitalize="none"
+      autocomplete="off"
+      autocorrect="off"
       class="min-w-fill mx-auto max-w-[512px] divide-y divide-zinc-700 rounded-xl bg-neutral-800/90 ring-1 ring-white/20 "
+      spellcheck="false"
     >
       <section class="flex items-center">
         <!-- SEARCH BOX -->
-        <Icon class="ml-4 h-7 w-7 text-neutral-400" src={SearchIcon} />
         <input
           bind:this={input}
           bind:value={search}
@@ -81,8 +84,11 @@
             .then((data) => (suggestions = data[1].slice(0, 7) || []))}
           autofocus
           placeholder="Search"
-          class="h-12 w-full bg-transparent p-2 text-2xl font-medium placeholder-neutral-600 outline-none selection:bg-blue-400"
+          class="ml-5 h-12 w-full bg-transparent p-2 text-2xl font-medium placeholder-neutral-600 outline-none selection:bg-blue-400"
         />
+        <button type="submit">
+          <Icon class="mr-5 h-7 w-7 text-neutral-400" src={SearchIcon} />
+        </button>
       </section>
       <!-- SEARCH SUGGESTSIONS START -->
       {#if suggestions.length > 1}

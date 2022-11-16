@@ -5,13 +5,11 @@
   import { weather } from "./weather-stores";
 </script>
 
-<Complication>
+<Complication href="https://www.windy.com/">
   {#await $weather}
     <Loading />
   {:then data}
-    <a href="https://www.windy.com/">
-      {weatherCode(data.current_weather.weathercode)}
-      {Math.round(data.current_weather.temperature)}°
-    </a>
+    {weatherCode(data.current_weather.weathercode)}
+    {Math.round(data.current_weather.temperature)}°
   {/await}
 </Complication>
