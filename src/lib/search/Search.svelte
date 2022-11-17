@@ -123,11 +123,20 @@
                     ? search.split(":")[0] + ":" + suggestion
                     : suggestion
                 )}
-                src="https://www.google.com/s2/favicons?domain={parseInput(
-                  search.includes(':')
-                    ? search.split(':')[0] + ':' + suggestion
-                    : suggestion
-                )}&sz=64"
+                src="https://www.google.com/s2/favicons?domain={new URL(
+                  normalizeUrl(
+                    parseInput(
+                      search.includes(':')
+                        ? search.split(':')[0] + ':' + suggestion
+                        : suggestion
+                    )
+                  )
+                ).hostname
+                  .split('.')
+                  .reverse()
+                  .splice(0, 2)
+                  .reverse()
+                  .join('.')}&sz=64"
                 class="inline w-8 pr-2"
               />
               {@html suggestion.replace(
