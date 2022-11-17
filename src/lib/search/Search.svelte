@@ -21,10 +21,6 @@
   $: query = search.includes(":") ? search.split(":")[1] : search;
 
   function handleKeydown(e) {
-    // if (e.altKey || e.ctrlKey || e.metaKey) {
-    //   return;
-    // }
-
     const key = e.key;
     const selectors = "a, input";
     if (key === "ArrowDown" || key === "ArrowUp") {
@@ -44,9 +40,11 @@
         search ? (search = "") : (modalVisible = false);
         break;
       default:
+        if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) {
+          return; // don't hijack key combos
+        }
         if (modalVisible === false) modalVisible = true;
         if (input) input.focus();
-        break;
     }
   }
 </script>
@@ -88,7 +86,7 @@
             // "https://duckduckgo.com/ac/?q=" + query + "&type=list", { jsonpCallbackFunction: "autocompleteCallback" }
           )
             .then((response) => response.json())
-            .then((data) => (suggestions = data[1].slice(0, 7) || []))}
+            .then((data) => (suggestions = data[1].slice(0, 7)))}
           autofocus
           placeholder="Search"
           class="ml-5 h-12 w-full bg-transparent p-2 text-2xl font-medium placeholder-neutral-600 outline-none selection:bg-blue-400"
@@ -101,7 +99,7 @@
       {#if suggestions.length > 1}
         <aside
           class=" max-h-96 overflow-y-auto py-2"
-          transition:slide={{ duration: 300 }}
+          transition:slide={{ duration: 200 }}
         >
           {#each suggestions as suggestion}
             <a
