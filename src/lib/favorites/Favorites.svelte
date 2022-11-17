@@ -17,7 +17,7 @@
           href={normalizeUrl(f.url)}
         >
           <Image
-            class="w-[60px] rounded-xl hover:scale-110 md:w-[80px] md:rounded-2xl"
+            class="w-[60px] rounded-xl transition-transform hover:scale-110 md:w-[80px] md:rounded-2xl"
             src="{f.name}.png"
             alt={f.name}
           />
