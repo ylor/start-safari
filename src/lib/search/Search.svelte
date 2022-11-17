@@ -137,7 +137,7 @@
                   .splice(0, 2)
                   .reverse()
                   .join('.')}&sz=64"
-                class="inline w-8 pr-2"
+                class="mr-3 inline w-8 rounded"
               />
               {@html suggestion.replace(
                 search.substring(search.indexOf(":") + 1).match(/.*\S/),
