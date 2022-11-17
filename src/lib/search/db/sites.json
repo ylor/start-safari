@@ -71,8 +71,7 @@
   {
     "name": "Discord",
     "alias": "discord",
-    "url": "https://discordapp.com/activity",
-    "category": "💬 Socials"
+    "url": "https://discordapp.com/activity"
   },
   {
     "name": "Emojipedia",
@@ -95,8 +94,7 @@
   {
     "name": "Geekhack",
     "alias": "gh",
-    "url": "https://geekhack.org",
-    "category": "💬 Socials"
+    "url": "https://geekhack.org"
   },
   {
     "name": "Geekhack - Group Buys and Preorders",
@@ -112,15 +110,12 @@
     "name": "Giant Bomb",
     "alias": "gb",
     "url": "https://giantbomb.com",
-    "search_url": "https://giantbomb.com/search/?i=&q={}",
-    "category": "📼 Media",
-    "favorite": "true"
+    "search_url": "https://giantbomb.com/search/?i=&q={}"
   },
   {
     "name": "Giant Bomb Infinite",
     "alias": "gb8",
-    "url": "https://giantbomb.com/infinite",
-    "category": "📼 Media"
+    "url": "https://giantbomb.com/infinite"
   },
   {
     "name": "Giphy",
@@ -132,28 +127,18 @@
     "name": "Github",
     "alias": "git",
     "url": "https://github.com",
-    "search_url": "https://github.com/search?q={}",
-    "category": "💬 Socials"
+    "search_url": "https://github.com/search?q={}"
   },
   {
     "name": "Grumpy Website",
     "alias": "grumpy",
-    "url": "https://grumpy.website",
-    "favorite": "true"
+    "url": "https://grumpy.website"
   },
   {
     "name": "Hacker News",
     "alias": "hn",
     "url": "https://news.ycombinator.com",
-    "search_url": "https://hn.algolia.com/?&query={}",
-    "category": "💬 Socials",
-    "favorite": "true"
-  },
-  {
-    "name": "Hasanabi",
-    "alias": "azan",
-    "url": "https://twitch.tv/hasanabi",
-    "category": "📼 Media"
+    "search_url": "https://hn.algolia.com/?&query={}"
   },
   {
     "name": "How Long to Beat",
@@ -170,22 +155,19 @@
   {
     "name": "Instagram",
     "alias": "ig",
-    "url": "https://instagram.com",
-    "category": "💬 Socials"
+    "url": "https://instagram.com"
   },
   {
     "name": "Letterboxd",
     "alias": "lb",
     "url": "https://letterboxd.com/films/popular/this/week/size/large",
-    "search_url": "https://letterboxd.com/search/films/{}",
-    "category": "📼 Media"
+    "search_url": "https://letterboxd.com/search/films/{}"
   },
   {
     "name": "Lobsters",
     "alias": "lobsters",
     "url": "https://lobste.rs",
-    "search_url": "https://lobste.rs/search?q={}",
-    "favorite": "true"
+    "search_url": "https://lobste.rs/search?q={}"
   },
 
   {
@@ -203,8 +185,7 @@
     "name": "Netflix",
     "alias": "nf",
     "url": "https://netflix.com",
-    "search_url": "https://netflix.com/search?q={}",
-    "category": "📼 Media"
+    "search_url": "https://netflix.com/search?q={}"
   },
   {
     "name": "Node Package Manager",
@@ -231,8 +212,7 @@
   {
     "name": "Overcast",
     "alias": "overcast",
-    "url": "https://overcast.fm",
-    "category": "📼 Media"
+    "url": "https://overcast.fm"
   },
 
   {
@@ -245,8 +225,7 @@
     "name": "Plex.tv",
     "alias": "plextv",
     "url": "https://app.plex.tv/desktop",
-    "search_url": "https://desktop#!/search?query={}",
-    "category": "📼 Media"
+    "search_url": "https://desktop#!/search?query={}"
   },
   {
     "name": "RARBG",
@@ -257,9 +236,7 @@
   {
     "name": "ResetERA",
     "alias": "re",
-    "url": "https://resetera.com",
-    "category": "💬 Socials",
-    "favorite": "true"
+    "url": "https://resetera.com"
   },
   {
     "name": "Simplenote",
@@ -269,20 +246,13 @@
   {
     "name": "Spotify",
     "alias": "spotify",
-    "url": "https://open.spotify.com",
-    "category": "📼 Media"
+    "url": "https://open.spotify.com"
   },
   {
     "name": "Steam",
     "alias": "steam",
     "url": "https://store.steampowered.com",
     "search_url": "https://store.steampowered.com/search/?term={}"
-  },
-  {
-    "name": "Tarik",
-    "alias": "tarik",
-    "url": "https://twitch.tv/tarik",
-    "category": "📼 Media"
   },
   {
     "name": "The Movie Database",
@@ -299,15 +269,7 @@
   {
     "name": "Tildes",
     "alias": "tildes",
-    "url": "https://tildes.net",
-    "category": "💬 Socials",
-    "favorite": "true"
-  },
-  {
-    "name": "Twitch",
-    "alias": "t",
-    "url": "https://twitch.tv",
-    "category": "📼 Media"
+    "url": "https://tildes.net"
   },
   {
     "name": "Vercel",
@@ -334,8 +296,7 @@
     "name": "YouTube",
     "alias": "y",
     "url": "https://youtube.com",
-    "search_url": "https://youtube.com/results?search_query={}",
-    "category": "📼 Media"
+    "search_url": "https://youtube.com/results?search_query={}"
   },
   {
     "name": "iCloud",

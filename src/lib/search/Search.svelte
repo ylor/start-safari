@@ -26,13 +26,17 @@
     // }
 
     const key = e.key;
+    const selectors = "a, input";
     if (key === "ArrowDown" || key === "ArrowUp") {
       const group = focusable_children(form);
-      key === "ArrowUp" ? group.prev() : group.next();
+      key === "ArrowUp" ? group.prev(selectors) : group.next(selectors);
       return;
     }
 
     switch (key) {
+      case "Alt":
+      case "Control":
+      case "Meta":
       case "Tab":
       case "Shift" && "Tab":
         break;
@@ -49,9 +53,12 @@
 
 <svelte:window on:keydown={handleKeydown} />
 
-<button class="basis-full sm:basis-auto" on:click={() => (modalVisible = true)}>
+<button
+  class="flex basis-full md:basis-auto"
+  on:click={() => (modalVisible = true)}
+>
   <Complication>
-    <Icon class="mt-[-4px] inline h-5" src={SearchIcon} />
+    <Icon class="-mt-1 inline h-5" src={SearchIcon} />
     &nbsp;Search
   </Complication>
 </button>
@@ -68,7 +75,7 @@
       autocapitalize="none"
       autocomplete="off"
       autocorrect="off"
-      class="min-w-fill mx-auto max-w-[512px] divide-y divide-zinc-700 rounded-xl bg-neutral-800/90 ring-1 ring-white/20 "
+      class="min-w-fill mx-auto max-w-[512px] divide-y divide-neutral-700 rounded-xl bg-neutral-800/80 ring-1 ring-white/25 "
       spellcheck="false"
     >
       <section class="flex items-center">
@@ -98,7 +105,7 @@
         >
           {#each suggestions as suggestion}
             <a
-              class="mx-2 block rounded-lg px-4 py-2 text-lg text-neutral-400 focus:bg-neutral-500 focus:text-neutral-100 focus:outline-none"
+              class="mx-2 block rounded-lg px-4 py-2 text-lg text-neutral-400 focus:bg-neutral-100/25 focus:text-neutral-100 focus:outline-none"
               href={parseInput(
                 search.includes(":")
                   ? search.split(":")[0] + ":" + suggestion
@@ -111,6 +118,7 @@
               on:mousemove={(event) => event.target.focus()}
             >
               <img
+                async
                 alt={parseInput(
                   search.includes(":")
                     ? search.split(":")[0] + ":" + suggestion
