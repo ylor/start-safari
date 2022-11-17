@@ -5,11 +5,7 @@
 
   const sunriseSunset = () => {
     const now = new Date().getHours();
-    if (now < 11 || now > 9) {
-      return "sunrise";
-    } else {
-      return "sunset";
-    }
+    now < 11 || now > 21 ? "sunrise" : "sunset";
   };
 </script>
 
@@ -18,19 +14,18 @@
     <Loading />
   {:then data}
     {#if sunriseSunset() === "sunrise"}
-      Sunrise 🌅
-      {new Date(data.daily.sunrise[0]).toLocaleTimeString("en-US", {
+      🌅 Sunrise {new Date(data.daily.sunrise[0]).toLocaleTimeString("en-US", {
         hour: "numeric",
         minute: "2-digit",
       })}
     {:else}
-      Sunset 🌅
+      🌅
       {new Date(data.daily.sunset[0]).toLocaleTimeString("en-US", {
         hour: "numeric",
         minute: "2-digit",
       })}
     {/if}
   {:catch error}
-    <p>An error occurred!</p>
+    <Loading />
   {/await}
 </Complication>

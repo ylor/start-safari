@@ -11,5 +11,7 @@
   {:then data}
     {weatherCode(data.current_weather.weathercode)}
     {Math.round(data.current_weather.temperature)}°
+  {:catch error}
+    <Loading />
   {/await}
 </Complication>

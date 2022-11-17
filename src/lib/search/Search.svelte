@@ -58,7 +58,7 @@
   on:click={() => (modalVisible = true)}
 >
   <Complication>
-    <Icon class="-mt-1 inline h-5" src={SearchIcon} />
+    <Icon class="mb-[3px] inline h-5" src={SearchIcon} />
     &nbsp;Search
   </Complication>
 </button>
@@ -141,7 +141,7 @@
               />
               {@html suggestion.replace(
                 search.substring(search.indexOf(":") + 1).match(/.*\S/),
-                `<span class="text-zinc-100">${search
+                `<span class="text-neutral-100">${search
                   .substring(search.indexOf(":") + 1)
                   .trim()}</span>`
               )}

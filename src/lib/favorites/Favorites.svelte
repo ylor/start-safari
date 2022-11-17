@@ -1,7 +1,8 @@
 <script>
-  import Image from "../util/ImageAsync.svelte";
+  import Image from "./ImageAsync.svelte";
   import favorites from "./favorites.json";
   import normalizeUrl from "../search/js/normalizeUrl";
+  import ImagePlaceholder from "./ImagePlaceholder.svelte";
 </script>
 
 <section class="py-10">
@@ -18,7 +19,7 @@
         >
           <Image
             class="w-[60px] rounded-xl transition-transform hover:scale-110 md:w-[80px] md:rounded-2xl"
-            src="{f.name}.png"
+            src="icon/{f.name}.png"
             alt={f.name}
           />
           <span class="pt-1 text-xs font-bold md:text-sm md:font-semibold"
