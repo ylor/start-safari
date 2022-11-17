@@ -9,7 +9,7 @@
 
 <main class="flex flex-col items-center">
   <Favorites />
-  <section class="flex flex-wrap gap-3 px-2">
+  <section class="flex w-full flex-wrap gap-3 px-1">
     <Weather />
     <SunriseSunset />
     <Search />
