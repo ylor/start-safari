@@ -16,7 +16,7 @@
   transition:fade={{ duration: 120 }}
 >
   <section
-    class="mx-auto w-fit px-3"
+    class="mx-auto w-full px-3 sm:w-[512px]"
     role="dialog"
     aria-modal="true"
     transition:scale={{ duration: 100 }}

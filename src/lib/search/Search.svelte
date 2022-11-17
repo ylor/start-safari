@@ -75,7 +75,7 @@
       autocapitalize="none"
       autocomplete="off"
       autocorrect="off"
-      class="min-w-fill mx-auto max-w-[512px] divide-y divide-neutral-700 rounded-xl bg-neutral-800/80 ring-1 ring-white/25 "
+      class="divide-y divide-neutral-700 rounded-xl bg-neutral-800/80 ring-1 ring-white/25"
       spellcheck="false"
     >
       <section class="flex items-center">
