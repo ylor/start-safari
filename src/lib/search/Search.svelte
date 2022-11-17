@@ -118,7 +118,6 @@
               on:mousemove={(event) => event.target.focus()}
             >
               <img
-                async
                 alt={parseInput(
                   search.includes(":")
                     ? search.split(":")[0] + ":" + suggestion
