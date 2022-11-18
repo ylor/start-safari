@@ -1,7 +1,7 @@
 <script>
-  import Complication from "../Complication.svelte";
-  import Loading from "../Loading.svelte";
-  import { weather } from "./weather-stores";
+  import Complication from "../ComplicationWrapper.svelte";
+  import Loading from "../ComplicationPlaceholder.svelte";
+  import { weather } from "./store";
 
   const sunriseSunset = () => {
     const now = new Date().getHours();

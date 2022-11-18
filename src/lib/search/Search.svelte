@@ -2,7 +2,7 @@
   import { slide } from "svelte/transition";
   import fetchJsonp from "fetch-jsonp";
 
-  import Complication from "../complications/Complication.svelte";
+  import Complication from "../complications/ComplicationWrapper.svelte";
   import Icon from "../util/Icon.svelte";
   import Modal from "./Modal.svelte";
 
@@ -10,7 +10,7 @@
 
   import { focusable_children, trap } from "./js/focus";
   import normalizeUrl from "./js/normalizeUrl";
-  import parseInput from "./js/parseInput";
+  import parseQuery from "./js/parseQuery";
 
   let form;
   let input;
@@ -41,7 +41,7 @@
         break;
       default:
         if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) {
-          return; // don't hijack key combos
+          if (key === "A" || key === "C" || key === "v") return; // don't hijack key combos
         }
         if (modalVisible === false) modalVisible = true;
         if (input) input.focus();
@@ -67,7 +67,7 @@
     <form
       bind:this={form}
       on:submit|preventDefault={location.assign(
-        normalizeUrl(parseInput(search))
+        normalizeUrl(parseQuery(search))
       )}
       use:trap
       autocapitalize="none"
@@ -104,7 +104,7 @@
           {#each suggestions as suggestion}
             <a
               class="mx-2 block rounded-lg px-4 py-2 text-lg text-neutral-400 focus:bg-neutral-100/25 focus:text-neutral-100 focus:outline-none"
-              href={parseInput(
+              href={parseQuery(
                 search.includes(":")
                   ? search.split(":")[0] + ":" + suggestion
                   : suggestion
@@ -116,14 +116,14 @@
               on:mousemove={(event) => event.target.focus()}
             >
               <img
-                alt={parseInput(
+                alt={parseQuery(
                   search.includes(":")
                     ? search.split(":")[0] + ":" + suggestion
                     : suggestion
                 )}
                 src="https://www.google.com/s2/favicons?domain={new URL(
                   normalizeUrl(
-                    parseInput(
+                    parseQuery(
                       search.includes(':')
                         ? search.split(':')[0] + ':' + suggestion
                         : suggestion

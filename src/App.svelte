@@ -3,15 +3,12 @@
   import Search from "@/lib/search/Search.svelte";
   import Weather from "./lib/complications/weather/Weather.svelte";
   import SunriseSunset from "./lib/complications/weather/SunriseSunset.svelte";
-  import Complication from "./lib/complications/Complication.svelte";
-  import Loading from "./lib/complications/Loading.svelte";
+  import Complication from "./lib/complications/ComplicationWrapper.svelte";
+  import Loading from "./lib/complications/ComplicationPlaceholder.svelte";
+  import Complications from "./lib/complications/Complications.svelte";
 </script>
 
 <main class="flex flex-col items-center">
   <Favorites />
-  <section class="flex w-full flex-wrap gap-3 px-1">
-    <Weather />
-    <SunriseSunset />
-    <Search />
-  </section>
+  <Complications />
 </main>
