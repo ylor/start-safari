@@ -24,7 +24,7 @@
         minute: "2-digit",
       })}
     {:else}
-      <ComplicationIcon class="inline mb-1" src={SunriseIcon} />
+      <ComplicationIcon class="inline mb-1" src={SunsetIcon} />
       {new Date(data.daily.sunset[0]).toLocaleTimeString("en-US", {
         hour: "numeric",
         minute: "2-digit",
