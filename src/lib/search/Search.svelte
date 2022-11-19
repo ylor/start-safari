@@ -2,8 +2,8 @@
   import { slide } from "svelte/transition";
   import fetchJsonp from "fetch-jsonp";
 
-  import Complication from "../complications/ComplicationWrapper.svelte";
-  import Icon from "../util/Icon.svelte";
+  import Complication from "../complications/meta/ComplicationWrapper.svelte";
+  import Icon from "../complications/meta/ComplicationIcon.svelte";
   import Modal from "./Modal.svelte";
 
   import SearchIcon from "@/assets/icon/search.svg?raw";
@@ -41,7 +41,7 @@
         break;
       default:
         if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) {
-          if (key === "A" || key === "C" || key === "v") return; // don't hijack key combos
+          if (key !== "v") return; // don't hijack key combos
         }
         if (modalVisible === false) modalVisible = true;
         if (input) input.focus();
@@ -56,7 +56,7 @@
   on:click={() => (modalVisible = true)}
 >
   <Complication>
-    <Icon class="mb-[3px] inline h-5" src={SearchIcon} />
+    <Icon src={SearchIcon} />
     &nbsp;Search
   </Complication>
 </button>

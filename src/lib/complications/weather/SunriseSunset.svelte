@@ -1,6 +1,9 @@
 <script>
-  import Complication from "../ComplicationWrapper.svelte";
-  import Loading from "../ComplicationPlaceholder.svelte";
+  import Complication from "../meta/ComplicationWrapper.svelte";
+  import Loading from "../meta/ComplicationPlaceholder.svelte";
+  import ComplicationIcon from "../meta/ComplicationIcon.svelte";
+  import SunriseIcon from "@/assets/icon/sunrise.svg?raw";
+  import SunsetIcon from "@/assets/icon/sunset.svg?raw";
   import { weather } from "./store";
 
   const sunriseSunset = () => {
@@ -14,12 +17,14 @@
     <Loading />
   {:then data}
     {#if sunriseSunset() === "sunrise"}
-      🌅 Sunrise {new Date(data.daily.sunrise[0]).toLocaleTimeString("en-US", {
+      <ComplicationIcon src={SunriseIcon} /> Sunrise {new Date(
+        data.daily.sunrise[0]
+      ).toLocaleTimeString("en-US", {
         hour: "numeric",
         minute: "2-digit",
       })}
     {:else}
-      🌅
+      <ComplicationIcon class="inline mb-1" src={SunriseIcon} />
       {new Date(data.daily.sunset[0]).toLocaleTimeString("en-US", {
         hour: "numeric",
         minute: "2-digit",

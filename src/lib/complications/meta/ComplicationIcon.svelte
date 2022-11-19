@@ -22,6 +22,7 @@
 </script>
 
 <svg
+  class="mb-[3px] inline h-5"
   xmlns="http://www.w3.org/2000/svg"
   {width}
   {height}

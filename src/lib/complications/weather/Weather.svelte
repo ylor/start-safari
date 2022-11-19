@@ -1,7 +1,7 @@
 <script>
   import weatherCode from "./weatherCode";
-  import Complication from "../ComplicationWrapper.svelte";
-  import Loading from "../ComplicationPlaceholder.svelte";
+  import Complication from "../meta/ComplicationWrapper.svelte";
+  import Loading from "../meta/ComplicationPlaceholder.svelte";
   import { weather } from "./store";
 </script>
 
