@@ -57,7 +57,7 @@
 >
   <Complication>
     <Icon src={SearchIcon} />
-    &nbsp;Search
+    Search
   </Complication>
 </button>
 
@@ -78,6 +78,9 @@
     >
       <section class="flex items-center">
         <!-- SEARCH BOX -->
+        <button type="submit">
+          <Icon class="ml-4 mr-2 h-7 w-7 text-neutral-400" src={SearchIcon} />
+        </button>
         <input
           bind:this={input}
           bind:value={search}
@@ -89,11 +92,8 @@
             .then((data) => (suggestions = data[1].slice(0, 7)))}
           autofocus
           placeholder="Search"
-          class="ml-5 h-12 w-full bg-transparent p-2 text-2xl font-medium placeholder-neutral-600 outline-none selection:bg-blue-400"
+          class="h-12 w-full bg-transparent p-2 text-2xl font-medium placeholder-neutral-600 outline-none selection:bg-blue-400"
         />
-        <button type="submit">
-          <Icon class="mr-5 h-7 w-7 text-neutral-400" src={SearchIcon} />
-        </button>
       </section>
       <!-- SEARCH SUGGESTSIONS START -->
       {#if suggestions.length > 1}
