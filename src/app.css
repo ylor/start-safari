@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 body {
-  @apply m-0 flex items-center justify-center bg-black p-0 text-white md:h-screen;
+  @apply m-0 flex justify-center bg-black p-0 text-white md:pt-[25vh];
 }
 
 h1 {
