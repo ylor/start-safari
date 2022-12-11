@@ -1,144 +1,143 @@
-import { get } from "svelte/store";
 import { getTracking, isTracking } from "./utils.js";
 
 const data = import.meta.glob("../db/*.json", { eager: true });
 
 let combined = [];
 Object.values(data).forEach((obj) => {
-  combined = combined
-    .concat(obj.default)
-    .sort((a, b) => a.name.localeCompare(b.name));
+	combined = combined
+		.concat(obj.default)
+		.sort((a, b) => a.name.localeCompare(b.name));
 });
 const db = combined;
 
 function isUrl(string) {
-  const ipPattern = new RegExp(
-    /^(.*?:\/\/)?((dev|local|localhost)|((2(?!5?[6-9])|1|(?!0\d))\d\d?\.?\b){4})(:\d+)?(\/.*)?$/g
-  );
-  const urlPattern = new RegExp(
-    /^((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/.+)?)$/i
-  );
+	const ipPattern = new RegExp(
+		/^(.*?:\/\/)?((dev|local|localhost)|((2(?!5?[6-9])|1|(?!0\d))\d\d?\.?\b){4})(:\d+)?(\/.*)?$/g,
+	);
+	const urlPattern = new RegExp(
+		/^((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/.+)?)$/i,
+	);
 
-  if (ipPattern.test(string) || urlPattern.test(string)) {
-    return true;
-  } else {
-    return false;
-  }
+	if (ipPattern.test(string) || urlPattern.test(string)) {
+		return true;
+	} else {
+		return false;
+	}
 }
 
 const findSiteByAlias = (string) => db.find((site) => site.alias === string);
 
 const aliasArray = db.map((site) => site.alias);
 const aliasDupes = aliasArray
-  .filter((item, index) => index !== aliasArray.indexOf(item))
-  .filter(Boolean);
+	.filter((item, index) => index !== aliasArray.indexOf(item))
+	.filter(Boolean);
 
 if (aliasDupes.length > 0) {
-  console.log("DUPLICATE ALIASES FOUND IN CONFIG:", aliasDupes);
+	console.log("DUPLICATE ALIASES FOUND IN CONFIG:", aliasDupes);
 }
 
 export default function parseInput(string) {
-  const input = string.toLowerCase();
+	const input = string.toLowerCase();
 
-  const duckUrl = "https://duckduckgo.com/?q={}";
-  const googleUrl = "https://google.com/search?q=";
+	const duckUrl = "https://duckduckgo.com/?q={}";
+	const googleUrl = "https://google.com/search?q=";
 
-  // BEGIN PARSER
+	// BEGIN PARSER
 
-  // handle @ for Twitter
-  // Ex: @SwiftOnSecurity
-  if (input.startsWith("@")) {
-    return "https://twitter.com/" + input;
-  }
+	// handle @ for Twitter
+	// Ex: @SwiftOnSecurity
+	if (input.startsWith("@")) {
+		return `https://twitter.com/${input}`;
+	}
 
-  // handle ~ for Tildes
-  // Ex: ~tech
-  if (input.startsWith("~")) {
-    return "https://tildes.net/" + input;
-  }
+	// handle ~ for Tildes
+	// Ex: ~tech
+	if (input.startsWith("~")) {
+		return `https://tildes.net/${input}`;
+	}
 
-  // handle $ for stocks
-  // Ex: $aapl
-  if (input.startsWith("$")) {
-    return "https://google.com/finance?q=" + input;
-  }
+	// handle $ for stocks
+	// Ex: $aapl
+	if (input.startsWith("$")) {
+		return `https://google.com/finance?q=${input}`;
+	}
 
-  // handle r/ for subreddits
-  if (input.startsWith("r/")) {
-    // handled aliased subreddits
-    const subredditAlias = input.match(/r\/\w+/i)[0];
-    if (aliasArray.includes(subredditAlias)) {
-      //// aliased subreddit search
-      //// r/mm:vega
-      if (input.includes(":")) {
-        const query = input.split(":")[1].trim();
-        return findSiteByAlias(subredditAlias).search_url.replace("{}", query);
-      }
+	// handle r/ for subreddits
+	if (input.startsWith("r/")) {
+		// handled aliased subreddits
+		const subredditAlias = input.match(/r\/\w+/i)[0];
+		if (aliasArray.includes(subredditAlias)) {
+			//// aliased subreddit search
+			//// r/mm:vega
+			if (input.includes(":")) {
+				const query = input.split(":")[1].trim();
+				return findSiteByAlias(subredditAlias).search_url.replace("{}", query);
+			}
 
-      //// aliased subreddit with path
-      //// Ex r/mm || r/mm/new
-      if (input.includes("/")) {
-        const path = input.split("/").slice(2).join();
-        return findSiteByAlias(subredditAlias).url + "/" + path;
-      }
-    }
-    // subreddit search
-    // Ex: r/mechmarket:vega
+			//// aliased subreddit with path
+			//// Ex r/mm || r/mm/new
+			if (input.includes("/")) {
+				const path = input.split("/").slice(2).join();
+				return `${findSiteByAlias(subredditAlias).url}/${path}`;
+			}
+		}
+		// subreddit search
+		// Ex: r/mechmarket:vega
 
-    if (input.includes(":")) {
-      const subreddit = input.split(":")[0];
-      const query = input.split(":")[1].trim();
+		if (input.includes(":")) {
+			const subreddit = input.split(":")[0];
+			const query = input.split(":")[1].trim();
 
-      return "https://www.reddit.com/[]/search/?q={}&restrict_sr=1"
-        .replace("[]", subreddit)
-        .replace("{}", query);
-    }
+			return "https://www.reddit.com/[]/search/?q={}&restrict_sr=1"
+				.replace("[]", subreddit)
+				.replace("{}", query);
+		}
 
-    //Ex: r/all
-    return "https://reddit.com/" + input;
-  }
+		//Ex: r/all
+		return `https://reddit.com/${input}`;
+	}
 
-  // handle match to aliased site defined in config.js
-  // Ex: gb => https://www.giantbomb.com/
-  if (aliasArray.includes(input)) {
-    return findSiteByAlias(input).url;
-  }
+	// handle match to aliased site defined in config.js
+	// Ex: gb => https://www.giantbomb.com/
+	if (aliasArray.includes(input)) {
+		return findSiteByAlias(input).url;
+	}
 
-  // handle match to alias with search
-  // Ex: Search YouTube => 'y:query'
-  if (input.includes(":") && aliasArray.includes(input.split(":")[0])) {
-    const alias = input.split(":")[0];
-    const query = input.split(":")[1].trim();
+	// handle match to alias with search
+	// Ex: Search YouTube => 'y:query'
+	if (input.includes(":") && aliasArray.includes(input.split(":")[0])) {
+		const alias = input.split(":")[0];
+		const query = input.split(":")[1].trim();
 
-    if (findSiteByAlias(alias)) {
-      return findSiteByAlias(alias).search_url.replace("{}", query);
-    }
-  }
+		if (findSiteByAlias(alias)) {
+			return findSiteByAlias(alias).search_url.replace("{}", query);
+		}
+	}
 
-  // handle paths with a matched alias
-  // Ex: gb/api => https://www.giantbomb.com/api
-  if (input.includes("/") && aliasArray.includes(input.split("/")[0])) {
-    const alias = input.split("/")[0];
-    const path = string.split("/").slice(1).join("/");
-    let site = findSiteByAlias(alias).url;
+	// handle paths with a matched alias
+	// Ex: gb/api => https://www.giantbomb.com/api
+	if (input.includes("/") && aliasArray.includes(input.split("/")[0])) {
+		const alias = input.split("/")[0];
+		const path = string.split("/").slice(1).join("/");
+		let site = findSiteByAlias(alias).url;
 
-    return site + "/" + path;
-  }
+		return `${site}/${path}`;
+	}
 
-  // handle tracking numbers
-  if (isTracking(input)) {
-    return getTracking(input);
-  }
+	// handle tracking numbers
+	if (isTracking(input)) {
+		return getTracking(input);
+	}
 
-  //  handle localhost/ip/url with optional specified port
-  //  Ex: apple.com
-  //  Ex: 127.0.1.1/index.html
-  //  Ex: localhost:5000
-  //  Ex: local:1337 || dev:1337 => localhost: 1337
-  if (isUrl(string)) {
-    return string;
-  }
+	//  handle localhost/ip/url with optional specified port
+	//  Ex: apple.com
+	//  Ex: 127.0.1.1/index.html
+	//  Ex: localhost:5000
+	//  Ex: local:1337 || dev:1337 => localhost: 1337
+	if (isUrl(string)) {
+		return string;
+	}
 
-  // send query to search engine
-  return googleUrl + string;
+	// send query to search engine
+	return googleUrl + string;
 }
