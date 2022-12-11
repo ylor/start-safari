@@ -9,7 +9,7 @@
   import SearchIcon from "@/assets/icon/search.svg?raw";
 
   import { focusable_children, trap } from "./js/focus";
-  import normalizeUrl from "./js/normalizeUrl";
+  import { normalizeUrl } from "./js/parseUrl";
   import parseQuery from "./js/parseQuery";
 
   let form;
@@ -40,7 +40,7 @@
         search ? (search = "") : (modalVisible = false);
         break;
       default:
-        if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) {
+        if (e.altKey || e.ctrlKey || e.metaKey) {
           if (key !== "v") return; // don't hijack key combos
         }
         if (modalVisible === false) modalVisible = true;
@@ -97,10 +97,7 @@
       </section>
       <!-- SEARCH SUGGESTSIONS START -->
       {#if suggestions.length > 1}
-        <aside
-          class=" max-h-96 overflow-y-auto py-2"
-          transition:slide={{ duration: 200 }}
-        >
+        <aside class=" max-h-96 overflow-y-auto py-2" transition:slide>
           {#each suggestions as suggestion}
             <a
               class="mx-2 block rounded-lg px-4 py-2 text-lg text-neutral-400 focus:bg-neutral-100/25 focus:text-neutral-100 focus:outline-none"

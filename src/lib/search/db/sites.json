@@ -295,7 +295,7 @@
   {
     "name": "YouTube",
     "alias": "y",
-    "url": "https://youtube.com",
+    "url": "https://www.youtube.com/feed/subscriptions",
     "search_url": "https://youtube.com/results?search_query={}"
   },
   {

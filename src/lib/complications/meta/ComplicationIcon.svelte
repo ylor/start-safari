@@ -9,7 +9,7 @@
 
   export let color = "currentColor";
   export let fill = color;
-  export let stroke = color;
+  export const stroke = color;
 
   $: elements = data.replace(/<svg ([^>]*)>/, "").replace("</svg>", "");
 

@@ -1,7 +1,6 @@
 <script>
   import ImageAsync from "./ImageAsync.svelte";
   import favorites from "./favorites.json";
-  import normalizeUrl from "../search/js/normalizeUrl";
 </script>
 
 <section class="w-full py-10 px-2.5">
@@ -11,10 +10,10 @@
       <li class="pb-1">
         <a
           class="flex max-w-[10ch] flex-col items-center leading-tight"
-          href={normalizeUrl(f.url)}
+          href={f.url}
         >
           <ImageAsync
-            class="w-[60px] rounded-xl transition-transform hover:scale-110 md:w-[72px] md:rounded-xl"
+            class="w-[60px] rounded-xl transition duration-200 hover:scale-110 md:w-[72px] md:rounded-xl"
             src="icon/{f.name}.png"
             alt={f.name}
           />

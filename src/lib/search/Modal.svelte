@@ -13,13 +13,13 @@
   bind:this={backdrop}
   on:click={(e) => (e.target === backdrop ? close() : null)}
   class="fixed inset-0 bg-neutral-900/10 pt-[20vh] backdrop-blur-md [@media(hover:none)]:pt-2.5 lg:[@media(hover:none)]:pt-10"
-  transition:fade={{ duration: 120 }}
+  transition:fade
 >
   <section
     class="mx-auto w-full px-3 sm:w-[512px]"
     role="dialog"
     aria-modal="true"
-    transition:scale={{ duration: 100 }}
+    transition:scale={{ duration: 333 }}
   >
     <slot>Lorem ipsum dolor sit amet</slot>
   </section>
