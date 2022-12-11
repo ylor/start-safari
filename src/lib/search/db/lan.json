@@ -7,7 +7,7 @@
   {
     "name": "Adguard",
     "alias": "dns",
-    "url": "http://10.0.1.2:5353"
+    "url": "http://10.0.1.2:8053"
   },
   {
     "name": "Plex",
