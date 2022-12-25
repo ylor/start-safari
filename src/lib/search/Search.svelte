@@ -98,7 +98,7 @@
       <!-- SEARCH SUGGESTSIONS START -->
       {#if suggestions.length > 1}
         <aside class=" max-h-96 overflow-y-auto py-2" transition:slide>
-          {#each suggestions as suggestion}
+          {#each suggestions as suggestion (suggestion)}
             <a
               class="mx-2 block rounded-lg px-4 py-2 text-lg text-neutral-400 focus:bg-neutral-100/25 focus:text-neutral-100 focus:outline-none"
               href={parseQuery(
