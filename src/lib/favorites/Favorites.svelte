@@ -13,7 +13,7 @@
           href={f.url}
         >
           <ImageAsync
-            class="w-[60px] rounded-xl transition duration-200 hover:scale-110 md:w-[72px] md:rounded-xl"
+            class="w-[60px] rounded-[22.5%] transition duration-200 hover:scale-110 md:w-[72px]"
             src="icon/{f.name}.png"
             alt={f.name}
           />
